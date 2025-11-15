@@ -4,6 +4,12 @@ import upload from "../utils/upload.js";
 import { authMiddleware, allowRoles } from "../middlewares/authMiddleware.js";
 const ticketRouter = Router()
 
+ticketRouter.get(
+  "/my-tickets", 
+  authMiddleware, 
+  ticketController.getMyTickets
+);
+
 ticketRouter.post("/", authMiddleware, allowRoles("user"), upload.single("attachments"), ticketController.createTicket);
 ticketRouter.get("/", authMiddleware, allowRoles("staff"),ticketController.getAllTickets);
 ticketRouter.get("/:ticketId", authMiddleware, allowRoles("staff", "user"),ticketController.getTicketById);

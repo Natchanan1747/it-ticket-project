@@ -73,6 +73,34 @@ export async function getTicketById(req,res){
     
 }
 
+export async function getMyTickets(req, res) {
+  try {
+    // ดึง ID ของ user ที่ Login อยู่ (จาก authMiddleware)
+    const loggedInUserId = req.user.id;
+
+    //  ค้นหา Ticket ใน Database
+    const myTickets = await prisma.ticket.findMany({
+      where: {
+        // ค้นหาด้วย 'submittedById' (เพื่อให้ตรงกับ schema และ createTicket)
+        submittedById: loggedInUserId 
+      },
+      include: {
+        // ดึง 'attachments' มาด้วย ตามที่ MyTickets.js คาดหวัง
+        attachments: true 
+      },
+      orderBy: {
+        createdAt: 'desc' // (createdAt ตาม schema)
+      }
+    });
+
+    // ส่งข้อมูลกลับไปให้ Frontend แบบ ห่อ data
+    successResponse(res, "ดึงข้อมูล Ticket สำเร็จ", myTickets);
+
+  } catch (error) {
+    errorResponse(res, "เกิดข้อผิดพลาด: " + error.message, 500);
+  }
+}
+
 export async function getAllTickets(req,res){       
     try {
         const tickets = await prisma.ticket.findMany()
