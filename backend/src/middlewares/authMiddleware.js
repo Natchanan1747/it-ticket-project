@@ -18,6 +18,11 @@ export function allowRoles(...allow) {
   const allowLower = allow.map((r) => r.toLowerCase());
   return (req, res, next) => {
     const roleName = req.user?.role?.toLowerCase();
+
+    // ⬇️ ⬇️ เพิ่ม 2 บรรทัดนี้ ⬇️ ⬇️
+    console.log("--- DEBUGGING ROLE ---");
+    console.log(`Role ของฉัน (จาก Token): ${roleName} | Role ที่อนุญาต (จาก Route): ${allowLower}`);
+    
     if (!roleName) return errorResponse(res,"Unauthenticated", 401);
     if (!allowLower.includes(roleName)) {
       return  errorResponse(res, "Forbidden", 403);
