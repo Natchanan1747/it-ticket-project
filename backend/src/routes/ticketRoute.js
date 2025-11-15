@@ -12,7 +12,7 @@ ticketRouter.get(
 
 ticketRouter.post("/", authMiddleware, allowRoles("user"), upload.single("attachments"), ticketController.createTicket);
 ticketRouter.get("/", authMiddleware, allowRoles("staff, admin"),ticketController.getAllTickets);
-ticketRouter.get("/:ticketId", authMiddleware, allowRoles("staff", "user"),ticketController.getTicketById);
+ticketRouter.get("/:ticketId", authMiddleware, allowRoles("staff","admin", "user"),ticketController.getTicketById);
 ticketRouter.post("/:ticketId/comments", authMiddleware, allowRoles("staff","user"), ticketController.createComment);
 ticketRouter.post("/:ticketId/status", authMiddleware, allowRoles("staff"), ticketController.updateStatus);
 
