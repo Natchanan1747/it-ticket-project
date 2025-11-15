@@ -5,7 +5,7 @@ CREATE TABLE `User` (
     `email` VARCHAR(100) NOT NULL,
     `phone` VARCHAR(15) NULL,
     `password` VARCHAR(255) NOT NULL,
-    `role` ENUM('admin', 'staff', 'user') NOT NULL,
+    `role` ENUM('ADMIN', 'STAFF', 'USER') NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     UNIQUE INDEX `User_email_key`(`email`),
@@ -18,13 +18,25 @@ CREATE TABLE `Ticket` (
     `title` VARCHAR(250) NOT NULL,
     `description` VARCHAR(191) NULL,
     `type` ENUM('Incident', 'Service_Request', 'Question', 'Bug_Report') NOT NULL,
-    `urgency` ENUM('low', 'medium', 'high') NOT NULL DEFAULT 'medium',
-    `status` ENUM('open', 'in_progress', 'canceled', 'closed', 'pending') NOT NULL DEFAULT 'open',
+    `urgency` ENUM('LOW', 'MEDIUM', 'HIGH') NOT NULL DEFAULT 'MEDIUM',
+    `status` ENUM('OPEN', 'IN_PROGRESS', 'CANCELED', 'CLOSED', 'PENDING') NOT NULL DEFAULT 'OPEN',
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
     `user_id` INTEGER NULL,
+    `assignedToId` INTEGER NULL,
 
     PRIMARY KEY (`ticket_id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Comment` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `body` TEXT NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `ticketId` INTEGER NOT NULL,
+    `authorId` INTEGER NOT NULL,
+
+    PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
@@ -87,6 +99,15 @@ CREATE TABLE `Notification` (
 
 -- AddForeignKey
 ALTER TABLE `Ticket` ADD CONSTRAINT `Ticket_user_id_fkey` FOREIGN KEY (`user_id`) REFERENCES `User`(`user_id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Ticket` ADD CONSTRAINT `Ticket_assignedToId_fkey` FOREIGN KEY (`assignedToId`) REFERENCES `User`(`user_id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Comment` ADD CONSTRAINT `Comment_ticketId_fkey` FOREIGN KEY (`ticketId`) REFERENCES `Ticket`(`ticket_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Comment` ADD CONSTRAINT `Comment_authorId_fkey` FOREIGN KEY (`authorId`) REFERENCES `User`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `LoginHistory` ADD CONSTRAINT `LoginHistory_user_id_fkey` FOREIGN KEY (`user_id`) REFERENCES `User`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;

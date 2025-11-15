@@ -1,14 +1,14 @@
 import express from "express";
+import cors from "cors";
 import authRouter from "./src/routes/authRoute.js";
 import ticketRouter from "./src/routes/ticketRoute.js";
 import userRoute from "./src/routes/userRoute.js";
-import cors from "cors";
 
 const app = express()
 const port = 3000
 
 app.use(cors({
-  origin: "http://localhost:4000",
+  origin: "http://localhost:3001",
 }));
 
 app.use(express.json());
@@ -21,5 +21,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`✅ Backend server listening on port ${port}`)
 })
