@@ -1,16 +1,15 @@
-// src/pages/Login.js
-
 import React, { useState } from 'react';
 import axios from 'axios'; 
-// CHANGED: Import hooks สำหรับ redirect และ auth
+
+// Import hooks สำหรับ redirect และ auth
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; 
 
 import { Container, Row, Col, Form, Button, Alert, Spinner } from 'react-bootstrap';
 import '../styles/login.css';
 
-// CHANGED: ย้าย API_URL ออกมาและแก้ไข Port
-const API_URL = 'http://localhost:8000/api'; // (ต้องตรงกับ Backend ของคุณ)
+// ย้าย API_URL ออกมาและแก้ไข Port
+const API_URL = 'http://localhost:3000/api'; // (ต้องตรงกับ Backend ของคุณ)
 
 export default function Login() {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -20,11 +19,10 @@ export default function Login() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
-    // CHANGED: เพิ่ม hooks
+    // เพิ่ม hooks
     const navigate = useNavigate();
     const { login } = useAuth(); // ดึงฟังก์ชัน login มาจาก Context
 
-    // --- ส่วน Validation ไม่ต้องแก้ไข (ดีอยู่แล้ว) ---
     const validateField = (name, value) => {
         if (name === 'email') {
             if (!value.trim()) return 'Email is required';
@@ -67,33 +65,33 @@ export default function Login() {
         setLoading(true);
 
         try {
-            // --- CHANGED: เปลี่ยนมาใช้ axios ---
+            // --- เปลี่ยนมาใช้ axios ---
             const response = await axios.post(`${API_URL}/auth/login`, formData, {
-                // (ถ้า Backend คุณใช้ HTTP-Only Cookie ให้เปิดคอมเมนต์บรรทัดล่าง)
+                // Backend HTTP-Only Cookie ให้เปิดคอมเมนต์บรรทัดล่าง
                 // withCredentials: true 
             });
 
             // Backend ควรส่งกลับมาเป็น { token: "...", user: {...} }
-            const { token, user } = response.data;
+            const { token, user } = response.data.data;
 
             if (!token || !user) {
                 throw new Error("Invalid response from server");
             }
 
-            // --- CHANGED: จัดการหลัง Login สำเร็จ ---
+            // --- จัดการหลัง Login สำเร็จ ---
             
             // 1. "บันทึก" token และ user ลงใน Context
             login(token, user); 
 
             setSuccess('Login successful! Redirecting...');
             
-            // 2. "เปลี่ยนหน้า" ไปยัง My Tickets (หรือ Dashboard)
+            // "เปลี่ยนหน้า" ไปยัง My Tickets (หรือ Dashboard)
             setTimeout(() => {
-                navigate('/my-tickets'); 
+                navigate('./App.js'); 
             }, 1000); // หน่วงเวลาเล็กน้อยให้เห็นข้อความ Success
 
         } catch (err) {
-            // CHANGED: การจัดการ Error ของ axios
+            // จัดการ Error ของ axios
             const errorMessage = err.response?.data?.message || err.message || 'An error occurred';
             setError(errorMessage);
         } finally {

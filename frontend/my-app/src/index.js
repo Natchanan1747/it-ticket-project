@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-// 1. ✅ Import AuthProvider (จากไฟล์ที่คุณสร้าง)
+// Import AuthProvider
 import { AuthProvider } from './context/AuthContext'; 
 
 import Navbar from './components/navbar';
