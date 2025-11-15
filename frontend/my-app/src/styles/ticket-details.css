@@ -1,0 +1,55 @@
+/* src/pages/mytickets-modern.css */
+
+/* เราสามารถตั้งค่าพื้นหลังส่วนกลางที่นี่ได้ */
+body {
+  background-color: #f8f9fa; /* สีเทาอ่อนๆ */
+}
+
+.mytickets-page-modern {
+  max-width: 1200px; /* จำกัดความกว้างสูงสุดของเนื้อหา */
+}
+
+/* เพิ่ม transition ให้ card ดูนุ่มนวล */
+.ticket-card {
+  transition: all 0.2s ease-in-out;
+  border: none; /* เอาขอบสีเทาของ card ออก */
+}
+
+/* เพิ่ม effect เวลา hover card */
+.ticket-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #333;
+}
+
+.card-footer {
+  background-color: #fdfdfd;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* ปรับ Label ของ Filter ให้อยู่เหนือ Input เสมอ */
+.form-label {
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.form-select, .form-control {
+  border-radius: 6px;
+}
+
+.form-select:focus, .form-control:focus {
+  border-color: #4B8FFF;
+  box-shadow: 0 0 5px rgba(75, 143, 255, 0.5);
+}
+
+.badge.bg-light {
+  background-color: #e2e3e5;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.8rem;
+}

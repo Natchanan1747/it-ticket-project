@@ -6,41 +6,43 @@ import '../styles/navbar.css';
 import { FaUser } from "react-icons/fa";
 
 function Navbar() {
-  // ดึงสถานะและข้อมูล user จาก Context
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, user, logout, loadingAuth } = useAuth();
   const navigate = useNavigate();
 
-  // สร้างฟังก์ชัน Handle Logout
   const handleLogout = () => {
     logout();
-    navigate('/login'); // ส่งไปหน้า Login หลัง Logout
+    navigate('/login'); 
   };
 
   return (
     <BootstrapNavbar bg="dark" expand="lg" className="navbar-custom" sticky="top">
       <Container>
-        {/* เปลี่ยน Brand ให้เป็น NavLink ไปหน้า Home */}
         <BootstrapNavbar.Brand as={NavLink} to="/" className="navbar-brand-custom">
           IT Support Tickets
         </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BootstrapNavbar.Collapse id="basic-navbar-nav">
           
-          {/* Navigation Links */}
           <Nav className="ms-auto nav-links">
             <Nav.Link as={NavLink} to="/" className="nav-link-item" end>
               Home
             </Nav.Link>
             
-            {/* ซ่อน Link ถ้ายังไม่ Login */}
-            {isAuthenticated && (
+            {!loadingAuth && isAuthenticated && (
               <>
                 <Nav.Link as={NavLink} to="/report" className="nav-link-item">
                   Report
                 </Nav.Link>
-                <Nav.Link as={NavLink} to="/mytickets" className="nav-link-item">
-                  My Tickets
-                </Nav.Link>
+
+                {user && (user.role === 'ADMIN' || user.role === 'STAFF') ? (
+                  <Nav.Link as={NavLink} to="/dashboard" className="nav-link-item">
+                    Dashboard
+                  </Nav.Link>
+                ) : (
+                  <Nav.Link as={NavLink} to="/mytickets" className="nav-link-item">
+                    My Tickets
+                  </Nav.Link>
+                )}
               </>
             )}
 
@@ -49,35 +51,31 @@ function Navbar() {
             </Nav.Link>
           </Nav>
           
-          {/* Navbar Buttons */}
           <div className="navbar-buttons ms-3">
-            
-            {isAuthenticated ? (
-              // --- (ถ้า Login แล้ว) แสดง Dropdown ชื่อ User ---
+            {!loadingAuth && isAuthenticated ? (
+              // --- (ถ้า Login แล้ว) ---
               <NavDropdown 
                 title={
-                  // 'navbar-user-name' ถูกกำหนดไว้ใน CSS ที่แก้ไข
                   <span className="navbar-user-name"> 
-                    {/* ใส่ Icon รูปคน) */}
                     <FaUser />
                     {user?.name || 'User'}
                   </span>
                 } 
                 id="user-nav-dropdown" 
-                // 'navbar-user-dropdown'
                 className="navbar-user-dropdown" 
                 align="end"
               >
-                {/* <NavDropdown.Item as={NavLink} to="/profile">Profile</NavDropdown.Item> */}
-                {/* <NavDropdown.Divider /> */}
-                {/* 'logout-btn' */}
-                <NavDropdown.Item onClick={handleLogout} className="navbar-btn logout-btn">
+                <NavDropdown.Item as={NavLink} to="/profile">Profile</NavDropdown.Item>
+                <NavDropdown.Divider />
+
+                <NavDropdown.Item onClick={handleLogout} className="logout-btn">
                   Logout
-                </NavDropdown.Item>
+                </NavDropdown.Item> 
+
               </NavDropdown>
 
-            ) : (
-              // --- (ถ้ายังไม่ Login) แสดงปุ่มเดิม ---
+            ) : !loadingAuth ? (
+              // --- (ถ้ายังไม่ Login) ---
               <>
                 <Button as={NavLink} to="/register" variant="outline-light" className="navbar-btn register-btn">
                   Register
@@ -86,6 +84,8 @@ function Navbar() {
                   Login
                 </Button>
               </>
+            ) : (
+              null 
             )}
 
           </div>
