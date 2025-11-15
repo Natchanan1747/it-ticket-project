@@ -1,0 +1,87 @@
+/* Page background and container */
+.report-page {
+	background: #f6f6f7;
+	min-height: calc(100vh - 70px);
+	padding: 40px 0 80px;
+}
+
+.report-container {
+	max-width: 1000px;
+}
+
+/* The white card that contains the form */
+.report-card {
+	background: #fff;
+	padding: 34px 44px;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+	border: 1px solid rgba(0,0,0,0.06);
+}
+
+.report-card__title {
+	color: #0f3b84; /* deep blue like screenshot */
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+
+.report-form label {
+	font-weight: 700;
+	font-size: 0.9rem;
+}
+
+.report-form .form-control,
+.report-form .form-select {
+	border-radius: 3px;
+	border: 1px solid #d0d0d0;
+	background: #fff;
+}
+
+.file-input-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.file-input {
+	border: 1px solid #d0d0d0;
+	padding: 8px 10px;
+	border-radius: 3px;
+}
+
+.file-hint {
+	color: #8a8a8a;
+	font-size: 0.9rem;
+}
+
+.report-actions .btn-cancel {
+	background: #ef5350; /* red */
+	border: none;
+	padding: 10px 38px;
+}
+
+.report-actions .btn-confirm {
+	background: #21d07a; /* green */
+	border: none;
+	padding: 10px 38px;
+}
+
+/* Make the form spacing look like the screenshot */
+@media (min-width: 768px) {
+	.report-card { padding: 44px 48px; }
+}
+
+/* Small helper: center HR and remove heavy styling */
+.report-card hr {
+	border: none;
+	border-top: 1px solid rgba(0,0,0,0.06);
+	margin: 12px 0 22px;
+}
+
+.report-card .form-control:focus {
+	box-shadow: none;
+	border-color: #bfcfe8;
+}
+
+.report-actions { margin-top: 18px; }
+
+/* Accessibility: ensure large clickable areas on mobile */
+.report-actions .btn-cancel, .report-actions .btn-confirm { min-width: 140px; }

@@ -1,0 +1,199 @@
+/* Modernized styles: centered white card on dark-blue background
+  Primary colors: white (content) and dark blue (accents/background)
+*/
+
+.App {
+  font-family: Inter, 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #4B8FFF 0%, #2B5CD4 100%);
+  padding: 80px 0;
+  color: white;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite 1s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 2.0rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+.hero-visual {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-illustration {
+  width: 100%;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Features Section */
+.features-section {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.feature-card {
+  background: #1E3A8A;
+  border: none;
+  border-radius: 16px;
+  color: white;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feature-card:hover {
+  background: #4B8FFF;
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(75, 143, 255, 0.3);
+}
+
+.feature-card-body {
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.feature-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+/* Footer */
+.app-footer {
+  background: #1E3A8A;
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-footer p {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0;
+    min-height: 300px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .features-section {
+    padding: 60px 0;
+  }
+
+  .feature-card-body {
+    padding: 30px 20px;
+    min-height: 200px;
+  }
+
+  .feature-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding: 40px 0;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .feature-card {
+    min-height: 200px;
+  }
+
+  .feature-card-body {
+    padding: 20px 15px;
+  }
+}
+

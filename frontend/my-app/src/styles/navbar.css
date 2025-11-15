@@ -1,0 +1,106 @@
+/* Navbar Styling */
+.navbar-custom {
+  background: linear-gradient(90deg, #1E3A8A 0%, #16316f 100%) !important;
+  padding: 12px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand-custom {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  letter-spacing: 0.5px;
+}
+
+.navbar-brand-custom:hover {
+  color: #4B8FFF !important;
+  transition: color 300ms ease;
+}
+
+/* Navigation Links */
+.nav-links {
+  gap: 30px;
+}
+
+.nav-link-item {
+  color: #ffffff !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 300ms ease;
+  position: relative;
+}
+
+.nav-link-item:hover {
+  color: #4B8FFF !important;
+}
+
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #4B8FFF;
+  transition: width 300ms ease;
+}
+
+.nav-link-item:hover::after {
+  width: 100%;
+}
+
+/* Navbar Buttons */
+.navbar-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.navbar-btn {
+  font-weight: 600;
+  padding: 6px 18px;
+  border-radius: 6px;
+  transition: all 300ms ease;
+  font-size: 0.9rem;
+}
+
+.register-btn {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.register-btn:hover {
+  background-color: transparent;
+  color: #4B8FFF;
+  border-color: #4B8FFF;
+}
+
+.login-btn {
+  background-color: #ffffff;
+  color: #1E3A8A;
+  border: none;
+}
+
+.login-btn:hover {
+  background-color: #4B8FFF;
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .nav-links {
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .navbar-buttons {
+    margin-top: 15px;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
