@@ -16,7 +16,6 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import MyTickets from './pages/MyTickets';
 import Report from './pages/Report';
-import SubmitReport from './pages/submit-report';
 import TicketDetail from './pages/ticket-detail';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -36,7 +35,6 @@ root.render(
           <Route path="/register" element={<Register />} />
           <Route path="/mytickets" element={<MyTickets />} />
           <Route path="/report" element={<Report />} />
-          <Route path="/submit-report" element={<SubmitReport />} />
           <Route path="/ticket/:id" element={<TicketDetail />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

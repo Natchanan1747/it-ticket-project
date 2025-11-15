@@ -37,3 +37,19 @@ body {
   font-size: 0.8rem;
   color: #555;
 }
+
+.form-select, .form-control {
+  border-radius: 6px;
+}
+
+.form-select:focus, .form-control:focus {
+  border-color: #4B8FFF;
+  box-shadow: 0 0 5px rgba(75, 143, 255, 0.5);
+}
+
+.badge.bg-light {
+  background-color: #e2e3e5;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
