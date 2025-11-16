@@ -1,0 +1,2 @@
+DATABASE_URL="mysql://root:root123@localhost:3307/it_support_ticket_system"
+JWT_SECRET=supersecretkey
