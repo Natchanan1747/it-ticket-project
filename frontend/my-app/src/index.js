@@ -17,6 +17,7 @@ import Register from './pages/Register';
 import MyTickets from './pages/MyTickets';
 import Report from './pages/Report';
 import TicketDetail from './pages/ticket-detail';
+import About from './pages/About';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -36,6 +37,7 @@ root.render(
           <Route path="/mytickets" element={<MyTickets />} />
           <Route path="/report" element={<Report />} />
           <Route path="/ticket/:id" element={<TicketDetail />} />
+          <Route path="/about" element={<About />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>

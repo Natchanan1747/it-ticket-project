@@ -1,0 +1,88 @@
+.about-page-container {
+  background-color: #f8f9fa; /* (พื้นหลังสีเทาอ่อน) */
+  min-height: 80vh;
+}
+
+/* --- Section Title (ใช้สีหลัก) --- */
+.section-title {
+  font-weight: 700;
+  color: #1E3A8A; /* (Project Primary Color) */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #6c757d; /* (สีเทา) */
+}
+
+/* --- Team Card (เหมือนใน Dashboard) --- */
+.team-member-card {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 6px; /* (ใช้ขอบ 6px) */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+/* (Hover Effect สีรอง) */
+.team-member-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(75, 143, 255, 0.2) !important; /* (Project Accent Color) */
+}
+
+/* --- Team Image (วงกลม) --- */
+.team-member-img-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.team-member-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 6px solid #e9ecef; /* (ขอบสีเทา) */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Text (ใช้สีหลัก) --- */
+.team-member-name {
+  font-weight: 700;
+  color: #1E3A8A; /* (Project Primary Color) */
+  margin-bottom: 0.25rem;
+}
+
+.team-member-role {
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* --- Social Icons (ใช้สีหลัก/สีรอง) --- */
+.team-member-social {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #1E3A8A; /* (Project Primary Color) */
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  background-color: #4B8FFF; /* (Project Accent Color) */
+  color: #ffffff;
+  transform: scale(1.1);
+}

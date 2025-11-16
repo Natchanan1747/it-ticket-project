@@ -11,15 +11,13 @@ import {
   Alert,
   Spinner,
   ListGroup,
-  Image,
 } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext"; // (ดึงข้อมูล User ที่ Login อยู่)
-import "../styles/ticket-details.css"; // (CSS ใหม่)
+import "../styles/ticket-details.css";
+import { FaRegUserCircle } from "react-icons/fa";
 
-// (ต้องตรงกับ Backend ของคุณ)
 const API_URL = "http://localhost:3000/api";
 
-// (Helper Function สำหรับ Urgency - เหมือนใน MyTickets)
 const getUrgencyProps = (urgency) => {
   switch (urgency) {
     case "LOW":
@@ -229,11 +227,7 @@ function TicketDetails() {
                   ticket.comments.map((comment) => (
                     <ListGroup.Item key={comment.id} className="comment-item">
                       <div className="d-flex">
-                        {/* (Icon รูปคน) */}
-                        <Image
-                          src="https://placehold.co/50x50/1E3A8A/FFFFFF?text=User"
-                          className="comment-author-icon"
-                        />
+                        <i className="comment-author-icon"><FaRegUserCircle /></i>
                         <div className="ms-3">
                           <div className="d-flex align-items-center">
                             {/* (ถ้า Backend ส่ง author มา, เราจะแสดงชื่อ) */}

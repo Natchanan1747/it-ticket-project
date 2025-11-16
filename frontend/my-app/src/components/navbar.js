@@ -65,8 +65,6 @@ function Navbar() {
                 className="navbar-user-dropdown" 
                 align="end"
               >
-                <NavDropdown.Item as={NavLink} to="/profile">Profile</NavDropdown.Item>
-                <NavDropdown.Divider />
 
                 <NavDropdown.Item onClick={handleLogout} className="logout-btn">
                   Logout

@@ -14,6 +14,7 @@ import {
   Alert,
 } from "react-bootstrap";
 import "../styles/mytickets.css";
+import { FaSearch } from "react-icons/fa";
 
 // URL ของ Backend API
 const API_URL = "http://localhost:3000/api";
@@ -206,7 +207,9 @@ function MyTickets() {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
             <Button variant="outline-secondary">
-              <i className="fa fa-search"></i>
+              <i className="fa fa-search">
+                <FaSearch />
+              </i>
             </Button>
           </InputGroup>
         </Col>

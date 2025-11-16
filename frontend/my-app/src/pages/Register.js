@@ -96,7 +96,7 @@ export default function Register() {
 		}
 
 		// Success case
-		setSuccess("สมัครสมาชิกสำเร็จ! กำลังนำทางไปยังหน้าเข้าสู่ระบบ...");
+		setSuccess("Register success! Redirecting...");
 		setFormData({ name: "", email: "", password: "", phone: "" });
 		setTouched({});
 		setSubmitted(false);
