@@ -31,7 +31,7 @@ function App() {
               <h1 className="hero-title">"จัดการปัญหาของคุณได้ง่ายในคลิกเดียว"</h1>
               <p className="hero-subtitle">ระบบ IT Support Ticket System สำหรับการจัดการอย่างมีประสิทธิภาพ</p>
               <div className="hero-image-placeholder">
-                {/* Image placeholder */}
+                {/* Image can be added here */}
               </div>
             </Col>
             <Col lg={6} md={12} className="hero-visual">
